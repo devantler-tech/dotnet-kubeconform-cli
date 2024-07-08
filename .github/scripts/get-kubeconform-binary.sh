@@ -18,7 +18,7 @@ get() {
   chmod +x "$target_dir/$target_name"
 }
 
-get "https://getbin.io/yannh/kubeconform?os=darwin&arch=amd64" "kubeconform" "src/KSail/assets/binaries" "kubeconform-darwin-amd64" true
-get "https://getbin.io/yannh/kubeconform?os=darwin&arch=arm64" "kubeconform" "src/KSail/assets/binaries" "kubeconform-darwin-arm64" true
-get "https://getbin.io/yannh/kubeconform?os=linux&arch=amd64" "kubeconform" "src/KSail/assets/binaries" "kubeconform-linux-amd64" true
-get "https://getbin.io/yannh/kubeconform?os=linux&arch=arm64" "kubeconform" "src/KSail/assets/binaries" "kubeconform-linux-arm64" true
+get "https://getbin.io/yannh/kubeconform?os=darwin&arch=amd64" "kubeconform" "src/Devantler.KubeconformCLI/assets/binaries" "kubeconform-darwin-amd64" true
+get "https://getbin.io/yannh/kubeconform?os=darwin&arch=arm64" "kubeconform" "src/Devantler.KubeconformCLI/assets/binaries" "kubeconform-darwin-arm64" true
+get "https://getbin.io/yannh/kubeconform?os=linux&arch=amd64" "kubeconform" "src/Devantler.KubeconformCLI/assets/binaries" "kubeconform-linux-amd64" true
+get "https://getbin.io/yannh/kubeconform?os=linux&arch=arm64" "kubeconform" "src/Devantler.KubeconformCLI/assets/binaries" "kubeconform-linux-arm64" true
