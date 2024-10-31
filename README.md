@@ -8,13 +8,12 @@
   <summary>Show/hide folder structure</summary>
 
 <!-- readme-tree start -->
-
 ```
 .
 ├── .github
 │   ├── scripts
 │   └── workflows
-├── Devantler.KindCLI
+├── Devantler.KubeconformCLI
 │   └── runtimes
 │       ├── linux-arm64
 │       │   └── native
@@ -24,15 +23,23 @@
 │       │   └── native
 │       ├── osx-x64
 │       │   └── native
+│       ├── win-arm64
+│       │   └── native
 │       └── win-x64
 │           └── native
-└── Devantler.KindCLI.Tests
-    ├── KindTests
+└── Devantler.KubeconformCLI.Tests
+    ├── KubeconformTests
     └── assets
+        └── k8s
+            ├── apps
+            ├── clusters
+            │   └── ksail-default
+            │       └── flux-system
+            └── infrastructure
+                └── controllers
 
-18 directories
+27 directories
 ```
-
 <!-- readme-tree end -->
 
 </details>
