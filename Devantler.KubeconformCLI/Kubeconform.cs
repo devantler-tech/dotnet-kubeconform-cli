@@ -9,7 +9,10 @@ namespace Devantler.KubeconformCLI;
 /// </summary>
 public static class Kubeconform
 {
-  static Command Command => GetCommand();
+  /// <summary>
+  /// The Kubeconform CLI command.
+  /// </summary>
+  public static Command Command => GetCommand();
   internal static Command GetCommand(PlatformID? platformID = default, Architecture? architecture = default, string? runtimeIdentifier = default)
   {
     platformID ??= Environment.OSVersion.Platform;
