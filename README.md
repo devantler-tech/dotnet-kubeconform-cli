@@ -56,7 +56,7 @@ using Devantler.KubeconformCLI;
 
 string[] kubeconformFlags = ["-skip=Secret"];
 string[] kubeconformConfig = ["-strict", "-ignore-missing-schemas", "-schema-location", "default", "-schema-location", "https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/{{.Group}}/{{.ResourceKind}}_{{.ResourceAPIVersion}}.json", "-verbose"];
-string [] files = Directory.GetFiles("path/to/manifests", "*.yaml", SearchOption.AllDirectories);
+string[] files = Directory.GetFiles("path/to/manifests", "*.yaml", SearchOption.AllDirectories);
 
 foreach (string file in files)
 {
