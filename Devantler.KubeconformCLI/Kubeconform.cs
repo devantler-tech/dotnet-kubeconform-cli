@@ -4,7 +4,10 @@ using Devantler.CLIRunner;
 
 namespace Devantler.KubeconformCLI;
 
-class Kubeconform()
+/// <summary>
+/// A class to run Kubeconform CLI commands.
+/// </summary>
+public static class Kubeconform
 {
   static Command Command => GetCommand();
   internal static Command GetCommand(PlatformID? platformID = default, Architecture? architecture = default, string? runtimeIdentifier = default)
@@ -29,7 +32,16 @@ class Kubeconform()
       Cli.Wrap(binaryPath);
   }
 
-  internal static async Task RunAsync(string file, string[]? kubeconformFlags = null, string[]? kubeconformConfig = null, CancellationToken cancellationToken = default)
+  /// <summary>
+  /// Runs Kubeconform on a file.
+  /// </summary>
+  /// <param name="file"></param>
+  /// <param name="kubeconformFlags"></param>
+  /// <param name="kubeconformConfig"></param>
+  /// <param name="cancellationToken"></param>
+  /// <returns></returns>
+  /// <exception cref="KubeconformException"></exception>
+  public static async Task RunAsync(string file, string[]? kubeconformFlags = null, string[]? kubeconformConfig = null, CancellationToken cancellationToken = default)
   {
     kubeconformFlags ??= [];
     kubeconformConfig ??= ["-strict", "-ignore-missing-schemas", "-schema-location", "default", "-schema-location", "https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/{{.Group}}/{{.ResourceKind}}_{{.ResourceAPIVersion}}.json", "-verbose"];
