@@ -29,8 +29,10 @@ class Kubeconform()
       Cli.Wrap(binaryPath);
   }
 
-  internal static async Task RunAsync(string[] kubeconformFlags, string[] kubeconformConfig, string file, CancellationToken cancellationToken)
+  internal static async Task RunAsync(string file, string[]? kubeconformFlags = null, string[]? kubeconformConfig = null, CancellationToken cancellationToken = default)
   {
+    kubeconformFlags ??= [];
+    kubeconformConfig ??= ["-strict", "-ignore-missing-schemas", "-schema-location", "default", "-schema-location", "https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/{{.Group}}/{{.ResourceKind}}_{{.ResourceAPIVersion}}.json", "-verbose"];
     var arguments = kubeconformFlags.Concat(kubeconformConfig).Concat([file]);
     var cmd = Command.WithArguments(arguments);
     var (exitCode, result) = await CLI.RunAsync(cmd, silent: true, cancellationToken: cancellationToken).ConfigureAwait(false);

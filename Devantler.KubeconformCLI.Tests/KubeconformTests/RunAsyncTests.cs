@@ -25,7 +25,37 @@ public class RunAsyncTests
     {
       try
       {
-        await Kubeconform.RunAsync(kubeconformFlags, kubeconformConfig, file, CancellationToken.None);
+        await Kubeconform.RunAsync(file, kubeconformFlags, kubeconformConfig, CancellationToken.None);
+      }
+      catch (KubeconformException ex)
+      {
+        exceptions.Add(ex);
+      }
+    }
+
+    // Assert
+    Assert.Empty(exceptions);
+  }
+
+  /// <summary>
+  /// Tests the RunAsync method with defaults.
+  /// </summary>
+  /// <returns></returns>
+  [Fact]
+  public async Task RunAsync_WithDefaults_ShouldRunSuccessfully()
+  {
+    // Arrange
+    string assetsDirectoryPath = Path.Combine(AppContext.BaseDirectory, "assets");
+    string[] filesInAssetsDirectory = Directory.GetFiles(assetsDirectoryPath, "*.yaml", SearchOption.AllDirectories);
+
+    // Act
+    var exceptions = new List<Exception>();
+
+    foreach (string file in filesInAssetsDirectory)
+    {
+      try
+      {
+        await Kubeconform.RunAsync(file, cancellationToken: CancellationToken.None);
       }
       catch (KubeconformException ex)
       {
