@@ -30,7 +30,14 @@
 └── Devantler.KubeconformCLI.Tests
     ├── KubeconformTests
     └── assets
-        └── k8s
+        ├── k8s
+        │   ├── apps
+        │   ├── clusters
+        │   │   └── ksail-default
+        │   │       └── flux-system
+        │   └── infrastructure
+        │       └── controllers
+        └── k8s-schema-issue
             ├── apps
             ├── clusters
             │   └── ksail-default
@@ -38,7 +45,7 @@
             └── infrastructure
                 └── controllers
 
-27 directories
+34 directories
 ```
 <!-- readme-tree end -->
 
