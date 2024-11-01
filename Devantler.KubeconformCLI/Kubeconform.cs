@@ -52,6 +52,6 @@ public static class Kubeconform
     var cmd = Command.WithArguments(arguments);
     var (exitCode, result) = await CLI.RunAsync(cmd, silent: true, cancellationToken: cancellationToken).ConfigureAwait(false);
     if (exitCode != 0)
-      throw new KubeconformException($"Kubeconform failed with exit code {exitCode} and error: {result}");
+      throw new KubeconformException($"{result}");
   }
 }
