@@ -8,7 +8,6 @@
   <summary>Show/hide folder structure</summary>
 
 <!-- readme-tree start -->
-
 ```
 .
 ├── .github
@@ -31,9 +30,8 @@
 └── Devantler.KubeconformCLI.Tests
     └── KubeconformTests
 
-34 directories
+19 directories
 ```
-
 <!-- readme-tree end -->
 
 </details>
