@@ -19,13 +19,17 @@ jobs:
         with:
           app_id: ${{ secrets.APP_ID }}
           private_key: ${{ secrets.APP_PRIVATE_KEY }}
+      - name: 🎯 Get version
+        run: |
+          BINARY_VERSION=$(./Devantler.KubeconformCLI/runtimes/linux-x64/native/kubeconform-linux-x64 -v)
+          echo "BINARY_VERSION=$BINARY_VERSION" >> $GITHUB_ENV
       - name: ✍🏻 Create PR
         uses: peter-evans/create-pull-request@v7
         with:
-          commit-message: Update Kubeconform binary
+          commit-message: Update Kubeconform binary to ${{ env.BINARY_VERSION }}
           title: Update Kubeconform binary
           body: |
-            This PR updates the Kubeconform binary used by Devantler.AgeCLI to the latest version.
+            This PR updates the Kubeconform binary used by Devantler.AgeCLI to ${{ env.BINARY_VERSION }}.
           branch: update-kubeconform-binary
           delete-branch: true
           labels: dependencies

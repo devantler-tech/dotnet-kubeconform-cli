@@ -36,6 +36,30 @@ public static class Kubeconform
   }
 
   /// <summary>
+  /// Runs the kubeconform CLI command with the given arguments.
+  /// </summary>
+  /// <param name="arguments"></param>
+  /// <param name="validation"></param>
+  /// <param name="silent"></param>
+  /// <param name="includeStdErr"></param>
+  /// <param name="cancellationToken"></param>
+  /// <returns></returns>
+  public static async Task<(int ExitCode, string Message)> RunAsync(
+    string[] arguments,
+    CommandResultValidation validation = CommandResultValidation.ZeroExitCode,
+    bool silent = false,
+    bool includeStdErr = true,
+    CancellationToken cancellationToken = default)
+  {
+    return await CLI.RunAsync(
+      Command.WithArguments(arguments),
+      validation: validation,
+      silent: silent,
+      includeStdErr: includeStdErr,
+      cancellationToken: cancellationToken).ConfigureAwait(false);
+  }
+
+  /// <summary>
   /// Runs Kubeconform on a file.
   /// </summary>
   /// <param name="file"></param>
@@ -44,6 +68,7 @@ public static class Kubeconform
   /// <param name="cancellationToken"></param>
   /// <returns></returns>
   /// <exception cref="KubeconformException"></exception>
+  [Obsolete("This method is deprecated. Use RunAsync instead.")]
   public static async Task RunAsync(string file, string[]? kubeconformFlags = null, string[]? kubeconformConfig = null, CancellationToken cancellationToken = default)
   {
     kubeconformFlags ??= [];
