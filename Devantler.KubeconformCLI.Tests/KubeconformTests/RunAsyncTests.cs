@@ -17,6 +17,6 @@ public class RunAsyncTests
 
     // Assert
     Assert.Equal(0, exitCode);
-    Assert.Equal("development", message);
+    Assert.Matches(@"^v\d+\.\d+\.\d+$", message.Trim());
   }
 }
