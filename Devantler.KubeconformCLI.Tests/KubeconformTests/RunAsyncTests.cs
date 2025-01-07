@@ -6,95 +6,17 @@ namespace Devantler.KubeconformCLI.Tests.KubeconformTests;
 public class RunAsyncTests
 {
   /// <summary>
-  /// Tests the RunAsync method with valid input.
+  /// Tests that the binary can return the version of the kubeconform CLI command.
   /// </summary>
   /// <returns></returns>
   [Fact]
-  public async Task RunAsync_WithValidInput_ShouldRunSuccessfully()
+  public async Task RunAsync_Version_ReturnsVersion()
   {
-    // Arrange
-    string[] kubeconformFlags = ["-skip=Secret"];
-    string[] kubeconformConfig = ["-strict", "-ignore-missing-schemas", "-schema-location", "default", "-schema-location", "https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/{{.Group}}/{{.ResourceKind}}_{{.ResourceAPIVersion}}.json", "-verbose"];
-    string assetsDirectoryPath = Path.Combine(AppContext.BaseDirectory, "assets", "k8s");
-    string[] filesInAssetsDirectory = Directory.GetFiles(assetsDirectoryPath, "*.yaml", SearchOption.AllDirectories);
-
     // Act
-    var exceptions = new List<Exception>();
-
-    foreach (string file in filesInAssetsDirectory)
-    {
-      try
-      {
-        await Kubeconform.RunAsync(file, kubeconformFlags, kubeconformConfig, CancellationToken.None);
-      }
-      catch (KubeconformException ex)
-      {
-        exceptions.Add(ex);
-      }
-    }
+    var (exitCode, message) = await Kubeconform.RunAsync(["-v"]);
 
     // Assert
-    Assert.Empty(exceptions);
-  }
-
-  /// <summary>
-  /// Tests the RunAsync method with defaults.
-  /// </summary>
-  /// <returns></returns>
-  [Fact]
-  public async Task RunAsync_WithDefaults_ShouldRunSuccessfully()
-  {
-    // Arrange
-    string assetsDirectoryPath = Path.Combine(AppContext.BaseDirectory, "assets", "k8s");
-    string[] filesInAssetsDirectory = Directory.GetFiles(assetsDirectoryPath, "*.yaml", SearchOption.AllDirectories);
-
-    // Act
-    var exceptions = new List<Exception>();
-
-    foreach (string file in filesInAssetsDirectory)
-    {
-      try
-      {
-        await Kubeconform.RunAsync(file, cancellationToken: CancellationToken.None);
-      }
-      catch (KubeconformException ex)
-      {
-        exceptions.Add(ex);
-      }
-    }
-
-    // Assert
-    Assert.Empty(exceptions);
-  }
-
-
-  /// <summary>
-  /// Tests the RunAsync method with defaults.
-  /// </summary>
-  /// <returns></returns>
-  [Fact]
-  public async Task RunAsync_WithDefaultsAndSchemaIssue_ShouldFailWithException()
-  {
-    // Arrange
-    string assetsDirectoryPath = Path.Combine(AppContext.BaseDirectory, "assets", "k8s-schema-issue");
-    string[] filesInAssetsDirectory = Directory.GetFiles(assetsDirectoryPath, "*.yaml", SearchOption.AllDirectories);
-
-    // Act
-    var exceptions = new List<Exception>();
-
-    foreach (string file in filesInAssetsDirectory)
-    {
-      try
-      {
-        await Kubeconform.RunAsync(file, cancellationToken: CancellationToken.None);
-      }
-      catch (KubeconformException ex)
-      {
-        exceptions.Add(ex);
-      }
-    }
-
-    // Assert
-    Assert.NotEmpty(exceptions);
+    Assert.Equal(0, exitCode);
+    Assert.Matches(@"^v\d+\.\d+\.\d+$", message.Trim());
   }
 }

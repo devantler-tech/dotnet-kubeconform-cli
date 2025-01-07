@@ -8,6 +8,7 @@
   <summary>Show/hide folder structure</summary>
 
 <!-- readme-tree start -->
+
 ```
 .
 ├── .github
@@ -28,25 +29,11 @@
 │       └── win-x64
 │           └── native
 └── Devantler.KubeconformCLI.Tests
-    ├── KubeconformTests
-    └── assets
-        ├── k8s
-        │   ├── apps
-        │   ├── clusters
-        │   │   └── ksail-default
-        │   │       └── flux-system
-        │   └── infrastructure
-        │       └── controllers
-        └── k8s-schema-issue
-            ├── apps
-            ├── clusters
-            │   └── ksail-default
-            │       └── flux-system
-            └── infrastructure
-                └── controllers
+    └── KubeconformTests
 
 34 directories
 ```
+
 <!-- readme-tree end -->
 
 </details>
@@ -68,12 +55,5 @@ You can execute the Kubeconform CLI commands using the `Kubeconform` class.
 ```csharp
 using Devantler.KubeconformCLI;
 
-string[] kubeconformFlags = ["-skip=Secret"];
-string[] kubeconformConfig = ["-strict", "-ignore-missing-schemas", "-schema-location", "default", "-schema-location", "https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/{{.Group}}/{{.ResourceKind}}_{{.ResourceAPIVersion}}.json", "-verbose"];
-string[] files = Directory.GetFiles("path/to/manifests", "*.yaml", SearchOption.AllDirectories);
-
-foreach (string file in files)
-{
-    _ = await Kubeconform.ValidateAsync(file, kubeconformFlags, kubeconformConfig, cancellationToken);
-}
+var (exitCode, message) = await Kubeconform.RunAsync(["arg1", "arg2"]);
 ```
