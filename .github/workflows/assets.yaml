@@ -27,7 +27,7 @@ jobs:
         uses: peter-evans/create-pull-request@v7
         with:
           commit-message: Update Kubeconform binary to ${{ env.BINARY_VERSION }}
-          title: Update Kubeconform binary
+          title: Update Kubeconform to ${{ env.BINARY_VERSION }}
           body: |
             This PR updates the Kubeconform binary used by Devantler.KubeconformCLI to ${{ env.BINARY_VERSION }}.
           branch: update-kubeconform-binary
