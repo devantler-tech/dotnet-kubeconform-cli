@@ -13,10 +13,10 @@ public class RunAsyncTests
   public async Task RunAsync_Version_ReturnsVersion()
   {
     // Act
-    var (exitCode, message) = await Kubeconform.RunAsync(["-v"]);
+    var (exitCode, output) = await Kubeconform.RunAsync(["-v"]);
 
     // Assert
     Assert.Equal(0, exitCode);
-    Assert.Matches(@"^v\d+\.\d+\.\d+$", message.Trim());
+    Assert.Matches(@"^v\d+\.\d+\.\d+$", output.Trim());
   }
 }

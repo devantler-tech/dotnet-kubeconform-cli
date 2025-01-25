@@ -53,5 +53,5 @@ You can execute the Kubeconform CLI commands using the `Kubeconform` class.
 ```csharp
 using Devantler.KubeconformCLI;
 
-var (exitCode, message) = await Kubeconform.RunAsync(["arg1", "arg2"]);
+var (exitCode, output) = await Kubeconform.RunAsync(["arg1", "arg2"]);
 ```
