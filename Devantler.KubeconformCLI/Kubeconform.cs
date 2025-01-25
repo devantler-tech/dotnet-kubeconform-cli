@@ -58,25 +58,4 @@ public static class Kubeconform
       includeStdErr: includeStdErr,
       cancellationToken: cancellationToken).ConfigureAwait(false);
   }
-
-  /// <summary>
-  /// Runs Kubeconform on a file.
-  /// </summary>
-  /// <param name="file"></param>
-  /// <param name="kubeconformFlags"></param>
-  /// <param name="kubeconformConfig"></param>
-  /// <param name="cancellationToken"></param>
-  /// <returns></returns>
-  /// <exception cref="KubeconformException"></exception>
-  [Obsolete("This method is deprecated. Use RunAsync instead.")]
-  public static async Task RunAsync(string file, string[]? kubeconformFlags = null, string[]? kubeconformConfig = null, CancellationToken cancellationToken = default)
-  {
-    kubeconformFlags ??= [];
-    kubeconformConfig ??= ["-strict", "-ignore-missing-schemas", "-schema-location", "default", "-schema-location", "https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/{{.Group}}/{{.ResourceKind}}_{{.ResourceAPIVersion}}.json", "-verbose"];
-    var arguments = kubeconformFlags.Concat(kubeconformConfig).Concat([file]);
-    var cmd = Command.WithArguments(arguments);
-    var (exitCode, result) = await CLI.RunAsync(cmd, silent: true, cancellationToken: cancellationToken).ConfigureAwait(false);
-    if (exitCode != 0)
-      throw new KubeconformException($"{result}");
-  }
 }
