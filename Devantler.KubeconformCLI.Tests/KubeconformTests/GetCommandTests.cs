@@ -16,7 +16,7 @@ public class GetCommandTests
   [InlineData(PlatformID.Unix, Architecture.X64, "linux-x64", "kubeconform-linux-x64")]
   [InlineData(PlatformID.Unix, Architecture.Arm64, "linux-arm64", "kubeconform-linux-arm64")]
   [InlineData(PlatformID.Win32NT, Architecture.X64, "win-x64", "kubeconform-win-x64.exe")]
-  [InlineData(PlatformID.Win32NT, Architecture.X64, "win-arm64", "kubeconform-win-arm64.exe")]
+  [InlineData(PlatformID.Win32NT, Architecture.Arm64, "win-arm64", "kubeconform-win-arm64.exe")]
   public void GetCommand_ShouldReturnOSXx64Binary(PlatformID platformID, Architecture architecture, string runtimeIdentifier, string expectedBinary)
   {
     // Act
