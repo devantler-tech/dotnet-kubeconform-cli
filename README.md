@@ -13,24 +13,26 @@
 ├── .github
 │   ├── scripts
 │   └── workflows
-├── Devantler.KubeconformCLI
-│   └── runtimes
-│       ├── linux-arm64
-│       │   └── native
-│       ├── linux-x64
-│       │   └── native
-│       ├── osx-arm64
-│       │   └── native
-│       ├── osx-x64
-│       │   └── native
-│       ├── win-arm64
-│       │   └── native
-│       └── win-x64
-│           └── native
-└── Devantler.KubeconformCLI.Tests
-    └── KubeconformTests
+├── src
+│   └── Devantler.KubeconformCLI
+│       └── runtimes
+│           ├── linux-arm64
+│           │   └── native
+│           ├── linux-x64
+│           │   └── native
+│           ├── osx-arm64
+│           │   └── native
+│           ├── osx-x64
+│           │   └── native
+│           ├── win-arm64
+│           │   └── native
+│           └── win-x64
+│               └── native
+└── tests
+    └── Devantler.KubeconformCLI.Tests
+        └── KubeconformTests
 
-20 directories
+22 directories
 ```
 <!-- readme-tree end -->
 
