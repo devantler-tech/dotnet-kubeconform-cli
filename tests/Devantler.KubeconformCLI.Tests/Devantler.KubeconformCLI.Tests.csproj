@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Devantler.KubeconformCLI\Devantler.KubeconformCLI.csproj" />
+    <ProjectReference Include="..\..\src\Devantler.KubeconformCLI\Devantler.KubeconformCLI.csproj" />
   </ItemGroup>
 
   <ItemGroup>
