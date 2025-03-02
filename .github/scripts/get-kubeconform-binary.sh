@@ -29,4 +29,4 @@ get "https://getbin.io/yannh/kubeconform?os=linux&arch=arm64" "kubeconform" "src
 get "https://getbin.io/yannh/kubeconform?os=linux&arch=amd64" "kubeconform" "src/Devantler.KubeconformCLI/runtimes/linux-x64/native" "kubeconform-linux-x64" "tar"
 get "https://getbin.io/yannh/kubeconform?os=windows&arch=amd64" "kubeconform.exe" "src/Devantler.KubeconformCLI/runtimes/win-x64/native" "kubeconform-win-x64.exe" "zip"
 get "https://getbin.io/yannh/kubeconform?os=windows&arch=arm64" "kubeconform.exe" "src/Devantler.KubeconformCLI/runtimes/win-arm64/native" "kubeconform-win-arm64.exe" "zip"
-rm -rf Devantler.KubeconformCLI/runtimes/*/native/LICENSE
+rm -rf src/Devantler.KubeconformCLI/runtimes/*/native/LICENSE
