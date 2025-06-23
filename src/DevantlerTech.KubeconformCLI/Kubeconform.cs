@@ -15,7 +15,7 @@ public static class Kubeconform
   {
     get
     {
-      string binaryName = "kubeconform";
+      string binaryName = OperatingSystem.IsWindows() ? "kubeconform.exe" : "kubeconform";
       string? pathEnv = Environment.GetEnvironmentVariable("PATH");
 
       if (!string.IsNullOrEmpty(pathEnv))
