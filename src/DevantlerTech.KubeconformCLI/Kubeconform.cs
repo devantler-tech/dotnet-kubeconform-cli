@@ -11,7 +11,7 @@ public static class Kubeconform
   /// <summary>
   /// The Kubeconform CLI command.
   /// </summary>
-  static Command Command
+  public static Command Command
   {
     get
     {
